@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class WindChill {
+	public static void main (String[] args){
+
+		double wind;
+		double temp;
+
+		do{
+			System.out.println("Please enter a temperature in degrees celsius that is less than or equal to 0");
+			Scanner tempScanner = new Scanner(System.in);
+			temp = tempScanner.nextDouble();
+			if(temp > 0){
+			}else{
+			}
+		}while(temp>0);		
+
+		do{
+			System.out.println("Please enter a wind speed that is above 0 and less than 5");
+			Scanner windScanner = new Scanner(System.in);
+			wind = windScanner.nextDouble();
+			if(wind <= 0 || wind > 5){
+			}else{
+			}
+		}while(wind<=0 || wind > 5);
+
+		double tempWind = temp + wind; 			//Not the correct formula...needs change
+		System.out.println(tempWind);
+	}
+}
