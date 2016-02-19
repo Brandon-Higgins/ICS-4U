@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Birthday {
+    public static void main (String[]args){
+        System.out.println("Welcome to my program!");
+        System.out.println("Do you know how to calculate the birthday number(y/n)?");
+        Scanner yesScanner = new Scanner(System.in);
+        String YorN = yesScanner.nextLine();
+        String yes = ("y");
+        if (YorN .equals(yes)) {
+            System.out.println("What is the number you generated?");
+            Scanner newScanner = new Scanner(System.in);
+            int num = newScanner.nextInt();
+            int num2 = num-165;
+            int month = num2/100;
+            int day = num2%100;
+            System.out.println("The month of the birthday is " +month + " the day of the birthday is " +day);
+        }
+        else { 
+            System.out.println("The Steps to calculate are");
+            System.out.println("Take your birth month and multiply it by 5");
+            System.out.println("Take that number and add 6");
+            System.out.println("Multiply that by 4");
+            System.out.println("Add 9 to that");
+            System.out.println("Multiply that by 5");
+            System.out.println("Add your birthday to that number");
+            System.out.println("What is the number you generated");
+            System.out.println("");
+
+            Scanner newScanner = new Scanner(System.in);
+            int num = newScanner.nextInt();
+            int num2 = num-165;
+            int month = num2/100;
+            int day = num2%100;
+            System.out.println("The month of the birthday is " +month + " the day of the birthday is " +day);
+        }
+        System.out.println("");
+        System.out.println("Thank you for using my program");
+
+    }
+}
