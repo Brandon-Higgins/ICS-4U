@@ -5,20 +5,20 @@ public class BirthdayGame {
       System.out.println("Please enter your birth month...");
       
       Scanner monthScanner = new Scanner(System.in);
-      int month = monthScanner.nextInt();
+      double month = monthScanner.nextInt();
       
-      int int1 = month*5;
-      int int2 = int1+6;
-      int int3 = int2*4;
-      int int4 = int3+9;
-      int int5 = int4*5;
+      double int1 = month*5;
+      double int2 = int1+6;
+      double int3 = int2*4;
+      double int4 = int3+9;
+      double int5 = int4*5;
       
       System.out.println("Please enter the day of your birth...");
       Scanner dayScanner = new Scanner(System.in);
-      int day = dayScanner.nextInt();
+      double day = dayScanner.nextInt();
       
-      int int6 = int5+day;
-      int birthday = int6-165;
+      double int6 = int5+day;
+      double birthday = int6-165;
 
       double birthday2 = birthday/100;
       System.out.println(birthday2);		// Fix rounding issue
