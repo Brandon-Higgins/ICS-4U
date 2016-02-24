@@ -1,3 +1,7 @@
+/**Copyright (c) Brandon Higgins 2016
+*All Rights Reserved
+*/
+
 import java.util.Scanner;
 
 public class BirthdayGame {
