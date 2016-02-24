@@ -1,3 +1,7 @@
+/**Copyright (c) Brandon Higgins 2016
+*All Rights Reserved
+*/
+
 public class Tester {
 	public static void main (String [] args) {
 
