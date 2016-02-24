@@ -1,7 +1,6 @@
-//Brandon Higgins
-//DATE
-//The purpose of this program is...
-// The "CLASS" class.
+/**Copyright (c) Brandon Higgins 2016
+*All Rights Reserved
+*/
 
 import java.awt.*;
 import java.io.*;
