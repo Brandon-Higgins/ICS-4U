@@ -1,0 +1,62 @@
+//Copyright (c) Brandon Higgins 2016
+//All Rights Reserved
+//Use of this code is strictly prohibited without use of the above copyright claim 
+
+import java.util.Scanner;
+
+public class Tax {
+    public static void main (String[] args) {
+
+        System.out.println("Please input your Income");
+        Scanner incomeScanner = new Scanner(System.in);
+        int income = incomeScanner.nextInt();
+
+        System.out.println("Please input your Housing costs");
+        Scanner houseScanner = new Scanner(System.in);
+        int houseCost = houseScanner.nextInt();
+
+        System.out.println("Please input the number of children you have");
+        Scanner childScanner = new Scanner(System.in);
+        int numChild = childScanner.nextInt();
+        
+        double endTax;
+        double tax;
+        double finalTax;
+        double finTax;
+
+        //if (numChild > 0) {
+           System.out.println("How many of those childen are in school?");
+           Scanner schoolScanner = new Scanner(System.in);
+            int numSchoolChild = schoolScanner.nextInt();
+        //}
+        //else {
+        //}
+        if (houseCost < 8000) {
+
+            tax = income - 10000;
+            System.out.println(tax);
+
+        }
+        else {
+            tax = income*0.18;
+            System.out.println(tax);
+        }
+        double red1 = numSchoolChild*1000;
+        double numChildNoSchool = numChild - numSchoolChild;
+        double red2 = numChildNoSchool*500;
+        double reduction = red1 + red2;
+
+        endTax = tax-reduction;
+
+        if (endTax < 2000) {
+            finalTax = endTax*0.15;
+            finTax = finalTax + endTax;
+        }
+        else {
+            finTax = endTax;
+        }
+        System.out.print("You are paying ");
+        System.out.print(finTax);
+        System.out.print(" in taxes");
+    }
+}
