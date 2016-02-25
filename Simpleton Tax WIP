@@ -48,7 +48,7 @@ public class Tax {
 
         endTax = tax-reduction;
 
-        if (endTax < 2000) {
+        if (endTax > 2000) {
             finalTax = endTax*0.15;
             finTax = finalTax + endTax;
         }
