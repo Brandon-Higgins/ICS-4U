@@ -18,23 +18,25 @@ public class Tax {
         System.out.println("Please input the number of children you have");
         Scanner childScanner = new Scanner(System.in);
         int numChild = childScanner.nextInt();
-        
+
         double endTax;
         double tax;
+        double tax1;
         double finalTax;
         double finTax;
 
         //if (numChild > 0) {
-           System.out.println("How many of those childen are in school?");
-           Scanner schoolScanner = new Scanner(System.in);
-            int numSchoolChild = schoolScanner.nextInt();
+        System.out.println("How many of those childen are in school?");
+        Scanner schoolScanner = new Scanner(System.in);
+        int numSchoolChild = schoolScanner.nextInt();
         //}
         //else {
         //}
         if (houseCost < 8000) {
 
-            tax = income - 10000;
-            System.out.println(tax);
+            tax1 = income - 10000;
+            tax = tax1*0.18;
+            
 
         }
         else {
