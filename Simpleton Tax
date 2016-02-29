@@ -41,8 +41,8 @@ public class Tax {
         }
         else {
             tax = income*0.18;
-          //  System.out.println("tax is...");
-          //  System.out.println(tax);
+            //  System.out.println("tax is...");
+            //  System.out.println(tax);
         }
         double red1 = numSchoolChild*1000;
         double numChildNoSchool = numChild - numSchoolChild;
@@ -55,11 +55,11 @@ public class Tax {
             refund = true;
         }
         else {
-            //endTax = tax;
+            // endTax = tax;
             refund = false;
         }
-     //   System.out.print("End tax is...");
-     //   System.out.println(endTax);
+        // System.out.print("End tax is...");
+        // System.out.println(endTax);
 
         if (endTax > 2000) {
             finalTax = endTax*0.15;
@@ -70,9 +70,11 @@ public class Tax {
         else {
             finTax = endTax;
         }
+
         System.out.print("You are paying ");
         System.out.print(finTax);
         System.out.println(" in taxes");
+
         if (refund == true){
             System.out.println("You are recieving refunds");
         }
