@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+
+
+    int a = 3;                  // Declaring integers
+    int b = 4;                  // primitive variable types are...
+    int c = a + b;
+
+    printf("3 + 4 = ");
+    printf("%d",c);                     // %d useful for some reason... havent figured out why
+    printf(" \n");                      // \n spaces a line
+
+
+    int testArray[3];                 // Declaring array called testArray with 3 "slots"
+
+    testArray[0] = 5;
+    testArray[1] = 2;
+    testArray[2] = 9;
+
+    printf("The third number in test array is... ");
+    printf("%d",testArray[2]);          // Prints third number in array ([2])
+    printf(" \n");
+
+    char name[] = "Brandon";            // Declares string ([]char) called name to equal "Brandon"
+
+    if (strncmp(name,"Brandon", 10) == 0)       // strncmp is string compare, name is declared string, 10 is max to declare
+    {
+        printf("Your name is Brandon");         // if name = "Brandon if will run
+    }
+    else
+    {
+        printf("Your name is NOT Brandon");
+    }
+    printf(" \n");
+
+    int i;
+    for (i = 0; i < 7; i++) {               // Example for loop basically Java counting
+        printf("%d\n I is...", i);
+    }
+
+    int j = 0;
+    while(j != 10) {                        // Example while loop basically Java
+        j++;
+        printf("%d\n J is... ", j);
+    }
+    
+    /* while (1) {
+        printf("\nHello World");            Infinite Loop
+    }
+    */   
+
+    
+    
+    return 0;
+}
+
+
