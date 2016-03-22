@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class isPrime 
+{
+    public static void main (String [] args)
+    {
+        boolean prime, prime2 = false, prime3;
+        System.out.println ("Please enter a number");
+
+        Scanner primeScanner = new Scanner (System.in);
+        int number = primeScanner.nextInt();
+
+        //isPrime2 isPrime2Object = new isPrime2();
+        //isPrime2.isPrime(number);
+
+        for (int i=2; i<number; i++){
+            if (number%i==0)
+                prime = false;
+            else 
+                prime = true;
+
+            if (prime == false) {
+                prime2 = true;	
+            }			
+            //else if (prime == true)	{
+            //		prime2 = false;
+        }
+        if (prime2 == true)	{
+            System.out.println("The number is not prime");	
+        }
+        if (prime2 == false){
+            System.out.println("The number is prime");
+        }
+    }
+}
