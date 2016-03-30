@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Dictionary {
+    public static void main (String [] args) throws IOException {
+    
+        Scanner dictionaryScanner = new Scanner(new File("H:\\H Drive\\Grade 12\\Code\\Files\\Dictionary.txt"));
+        
+        int maxIndex = -1;
+        String words[] = new String [50000];
+        int letters[] = new int[50000]; 
+        
+        
+        while(dictionaryScanner.hasNext()) {
+            maxIndex++;
+            words[maxIndex] = dictionaryScanner.nextLine();
+            
+            int numLetters = words[maxIndex].length();
+            letters[maxIndex] = numLetters;
+            
+            System.out.println(words[maxIndex].length());
+            System.out.println(words[maxIndex]);
+        }  
+        int largest = Integer.MIN_VALUE;
+        for (int i = 0; i<letters.length; i++) {
+            if (letters[i] > largest) {
+                largest = letters[i];
+            }
+        }
+        System.out.println("The largest number is... " +largest);
+             
+    }
+}
