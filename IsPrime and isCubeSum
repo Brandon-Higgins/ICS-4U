@@ -1,35 +1,54 @@
 import java.util.Scanner;
 
-public class isPrime 
-{
-    public static void main (String [] args)
-    {
-        boolean prime, prime2 = false, prime3;
-        System.out.println ("Please enter a number");
+public class primeSum{
+    public static void main (String [] args) {
 
-        Scanner primeScanner = new Scanner (System.in);
-        int number = primeScanner.nextInt();
-
-        //isPrime2 isPrime2Object = new isPrime2();
-        //isPrime2.isPrime(number);
-
-        for (int i=2; i<number; i++){
-            if (number%i==0)
-                prime = false;
-            else 
-                prime = true;
-
-            if (prime == false) {
-                prime2 = true;	
-            }			
-            //else if (prime == true)	{
-            //		prime2 = false;
-        }
-        if (prime2 == true)	{
-            System.out.println("The number is not prime");	
-        }
-        if (prime2 == false){
-            System.out.println("The number is prime");
-        }
+        System.out.println("Welcome to Brandon's program");
+        System.out.println("Please enter a number");
+        Scanner newScanner = new Scanner(System.in);
+        int num= newScanner.nextInt();
+        
+        boolean trueFalse = isPrime(num);
+        System.out.println(trueFalse);
+        
+        boolean trueFalse2 = isCubeSum(num);
+        System.out.println(trueFalse2);
     }
+    public static boolean isPrime(int num){
+    
+        boolean isPrime = true; 
+    for (int i = 2; i < num && isPrime; i++)
+      if (num % i == 0)
+        isPrime= false;
+    if (isPrime)
+      System.out.println(num + " is a prime number.");
+    else
+      System.out.println(num + " is NOT a prime number.");
+      
+      return isPrime;
+        
+    }
+    
+    public static boolean isCubeSum(int num) {
+        
+      boolean isCubeSum = true;
+      int h = num/100;
+      int t = num/10%10;
+      int u = num%10;
+      if (num == h*h*h + t*t*t + u*u*u) {
+        
+        System.out.println(num + " equals the sum of the "
+                           + "cubes of its digits.");
+        isCubeSum = true;
+    }
+        else {
+        System.out.println(num + " does not equal the sum of the "
+                           + "cubes of its digits.");
+        isCubeSum = false;
+    }
+        return isCubeSum;
+        
+    }
+    
+    
 }
