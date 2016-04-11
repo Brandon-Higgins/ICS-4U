@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Transpose{
+    public static void main (String [] args) {
+
+        System.out.println("Welcome to my transpose program!");
+        System.out.println("Please enter the values in the array");
+        Scanner newScanner = new Scanner(System.in);
+        int a = newScanner.nextInt();int b = newScanner.nextInt();
+            int c = newScanner.nextInt();int d = newScanner.nextInt();
+                int e = newScanner.nextInt();int f = newScanner.nextInt();
+
+        int[][] matrix = {{a,b,c},{d,e,f}};
+        
+        printBoard(matrix);
+
+        int[][] transposedMatrix = Transpose(a,b,c,d,e,f);
+        printTranspose(transposedMatrix);
+
+    }
+
+    public static void printBoard(final int[][] matrix) {
+        for (final int[] row : matrix) {
+            for (final int i : row) {
+                System.out.print(i);
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[][] Transpose(int a, int b, int c, int d, int e, int f){
+        int[][] transposeMatrix = {{a,d},{b,e},{c,f}};
+        return transposeMatrix;
+
+    }
+
+    public static void printTranspose(int[][] transposedMatrix){
+        for (final int[] row : transposedMatrix) {
+            for (final int i : row) {
+                System.out.print(i);
+            }
+            System.out.println();
+        }
+    }
+}
