@@ -1,0 +1,76 @@
+// The "Fractionmain" class.
+// Needs the Fraction class (Fraction.java, name is vital - must match the "data type" of f1) in its same directory to run properly
+import java.awt.*;
+
+public class Fractionmain
+{
+
+    public static void main (String[] args)
+    {
+
+        //Section 6.1 of Carter, Example 1
+        Fraction f1 = new Fraction();
+        System.out.println("fraction 1 " + f1);
+
+        System.out.println ();
+        f1.num = 3;
+        f1.den = 4;
+
+        //System.out.println("fraction 1 " + f1);
+        System.out.println("fraction 1 numerator: " + f1.num);
+        System.out.println("fraction 1 denomintor: " + f1.den);
+
+        Fraction f2 = new Fraction();
+        f2.num = 5;
+        f2.den = 6;
+
+        //System.out.println("fraction 2 " + f2);
+
+        //Section 6.1 of Carter, Example 2
+        f1.num = f1.num - 1;
+        f1.den = f2.den + 3;
+
+        System.out.println("fraction 1 numerator: " + f1.num);
+        System.out.println("fraction 1 denominator: " + f1.den);
+
+        System.out.println("fraction 2 numerator: " + f2.num);
+        System.out.println("fraction 2 denominator: " + f2.den);
+
+        //Section 6.1 of Carter, Example 3
+        Fraction f = new Fraction ();
+        f.num = 5;
+        f.den = 8;
+
+        System.out.println("fraction f " + f);
+        System.out.println("fraction f numerator: " + f.num);
+        System.out.println("fraction f denominator: " + f.den);
+
+        Fraction g = f;
+
+        System.out.println("fraction f " + f);
+        System.out.println("fraction f numerator: " + f.num);
+        System.out.println("fraction f denominator: " + f.den);
+
+        System.out.println("fraction g " + g);
+        System.out.println("fraction g numerator: " + g.num);
+        System.out.println("fraction g denominator: " + g.den);
+
+        g.num = 1;
+
+        System.out.println("fraction f " + f);
+        System.out.println("fraction f numerator: " + f.num);
+        System.out.println("fraction f denominator: " + f.den);
+
+        System.out.println("fraction g " + g);
+        System.out.println("fraction g numerator: " + g.num);
+        System.out.println("fraction g denominator: " + g.den);
+
+    } // main method
+} // Fractionmain class
+
+
+class Fraction
+{
+    int num;
+    int den;
+}
