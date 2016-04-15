@@ -27,14 +27,14 @@ public class Fractionmain
         //System.out.println("fraction 2 " + f2);
 
         //Section 6.1 of Carter, Example 2
-        f1.num = f1.num - 1;
-        f1.den = f2.den + 3;
+        f1.num = f1.num - 1;                        // Overwrites  f1 num to be f1 num plus 1. results in 2
+        f1.den = f2.den + 3;                        // Overwrites f1 den into f2 den plus 3. results in 9 
 
-        System.out.println("fraction 1 numerator: " + f1.num);
-        System.out.println("fraction 1 denominator: " + f1.den);
+        System.out.println("fraction 1 numerator: " + f1.num);      // Will output 2
+        System.out.println("fraction 1 denominator: " + f1.den);    // Will output 9
 
-        System.out.println("fraction 2 numerator: " + f2.num);
-        System.out.println("fraction 2 denominator: " + f2.den);
+        System.out.println("fraction 2 numerator: " + f2.num);      // Will output 5
+        System.out.println("fraction 2 denominator: " + f2.den);    // Will output 6
 
         //Section 6.1 of Carter, Example 3
         Fraction f = new Fraction ();
