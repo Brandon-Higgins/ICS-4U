@@ -17,6 +17,6 @@ public class ArrayOfDope {
             System.out.print(", ");
 
         }
-        System.out.println("Thank you for suing my code");
+        System.out.println("Thank you for using my code");
     }
 }
