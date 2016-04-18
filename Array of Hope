@@ -1,0 +1,22 @@
+//Copyright (c) Brandon Higgins 2016
+//All Rights Reserved
+//Use of this code is strictly prohibited without use of the above copyright claim 
+
+public class ArrayOfDope {
+    public static void main(String [] args) {
+
+        System.out.println("Welcome to my code");
+
+        char charArray[] = new char[91];
+        char c;
+
+        for (int i = 65; i <91; i++) {
+            c = (char) i;
+            charArray[i] = c;
+            System.out.print(c);
+            System.out.print(", ");
+
+        }
+        System.out.println("Thank you for suing my code");
+    }
+}
