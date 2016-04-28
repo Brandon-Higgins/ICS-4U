@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class Tester {
+    public static void main (String [] args) {
+
+        Circle circleOne = new Circle(1, 0, 0);
+
+        System.out.println("The area of the circle is " + circleOne.area());
+        System.out.println("The circumference of the circle is " + circleOne.circumference());
+    }
+}
