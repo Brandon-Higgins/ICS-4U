@@ -1,0 +1,38 @@
+
+public class Circle
+{
+    public double rad;
+    public double x;
+    public double y;
+
+    public Circle(double r, double xVal, double yVal)
+    {
+        rad = r;
+        
+        y = yVal;
+        x = xVal;
+
+    }
+
+    public double circumference()
+    {
+
+        double twoPI = 3.14159*2;
+        double circ = twoPI*rad;
+
+        return circ;
+    }
+
+    public double area(){
+
+        double a = Math.PI * rad * rad;
+        return a;
+
+    }
+
+    public double Test(){
+
+        double testVar = 2*x;
+        return testVar;
+    }
+}
