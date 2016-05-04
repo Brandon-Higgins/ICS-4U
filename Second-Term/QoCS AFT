@@ -1,0 +1,98 @@
+// Brandon Higgins
+// May 4th 2016
+// Purpose...
+
+import java.util.*;
+
+public class Test{
+    public static void main(String[] args) {
+        Welcome();
+        
+        int numOfStones = numOfStones();
+        System.out.println("There are "+numOfStones+" Stones to choose from");
+        boolean isValid = false;
+
+        System.out.println("Please choose a number between 1 to 3");
+        Scanner numStoneScanner = new Scanner(System.in);
+        int userPick = numStoneScanner.nextInt();
+        
+        int changeInStonesUser = changeInStonesUser(userPick);
+        int stonesLeft = numOfStones - changeInStonesUser;
+        
+        System.out.println("There are "+stonesLeft+ " Stones left");
+        
+        isValid = isValid(userPick);
+        if (isValid == true){
+            System.out.println("The number you have entered is valid");
+        }
+        else {
+            System.out.println("The number you have entered is invalid");
+        }
+
+        int compPick = drawStones();
+        System.out.println("The computer has drawn " +compPick+ " Stones");
+        
+        int changeInStones = stonesLeft - changeInStonesComp(compPick);
+        System.out.println("There are "+changeInStones+" stones left");
+        
+        
+
+        
+    }
+
+    public static void Welcome(){
+        System.out.println("*****************************");
+        System.out.println("Welcome to Brandon's Program!");
+        System.out.println("*****************************");
+        System.out.println();
+    }
+
+    public static int numOfStones(){
+        int max = 30;
+        int min = 15;
+
+        int range = (max - min) + 1;     
+        int numOfStones = (int)(Math.random() * range) + min;
+
+        return numOfStones;
+    }
+
+    public static boolean isValid(int userPick){
+        if (userPick >= 1 && userPick <=3){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static int drawStones(){
+        int max = 6;
+        int min = 1;
+
+        int range = (max - min) + 1;     
+        int numOfStones = (int)(Math.random() * range) + min;
+        if (numOfStones == 1 || numOfStones == 2){
+            numOfStones =1;
+        }
+        else if(numOfStones ==3 || numOfStones ==4){
+            numOfStones=2;
+        }
+        else {
+            numOfStones=3;
+        }
+        return numOfStones;
+    }
+    
+    public static int changeInStonesUser(int userPick){
+        
+        int changeInStones = userPick;
+        return changeInStones;
+    }
+    
+    public static int changeInStonesComp(int compPick){
+    
+        int changeInStones = compPick;
+        return changeInStones;
+    }
+}
