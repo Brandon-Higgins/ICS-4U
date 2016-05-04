@@ -1,0 +1,62 @@
+/**Copyright (c) Brandon Higgins 2016
+All Rights Reserved
+Use of this code is strictly prohibited without use of the above copyright claim 
+ */
+
+import java.util.Scanner;
+
+public class ChocolatesAndChilis {
+	public static void main(String[] args) {
+
+
+		int numChoc = 13;
+		System.out.println("I take 1 chocolate");
+		numChoc = numChoc -1;
+		 
+		while (numChoc > -1) {
+			
+			int chocChange=0;
+			System.out.println("There are " +numChoc+ " Chocolates left");
+			System.out.println("Please pick a number between 1 and 3");
+			Scanner chocScanner = new Scanner(System.in);
+			int userPick = chocScanner.nextInt();
+
+
+			if (userPick ==1) {
+				System.out.println("I pick 3 Chocolates");
+				chocChange = userPickOne(userPick);
+			}
+			else if (userPick ==2) {
+				System.out.println("I pick 2 Chocolates");
+				chocChange = userPickTwo(userPick);
+			}
+			else if (userPick ==3) {
+				System.out.println("I pick 1 Chocolates");
+				chocChange = userPickThree(userPick);
+			}
+
+			numChoc = numChoc - chocChange;
+			if (numChoc==0){
+				System.out.println("You lose");
+				System.exit(1);
+			}
+		}
+	}
+	public static int userPickOne(int userPick){
+
+		int changeInChocolates = userPick + 3;
+		return changeInChocolates;
+	}
+
+	public static int userPickTwo(int userPick){
+
+		int changeInChocolates = userPick + 2;
+		return changeInChocolates;
+	}
+
+	public static int userPickThree(int userPick){
+
+		int changeInChocolates = userPick + 1;
+		return changeInChocolates;
+	}
+}
