@@ -15,28 +15,30 @@ public class Game {
 				{'K','L','M','N','O'},{'P','Q','R','S','T'},{'U','V','W','X','Y'}};
 
 		printBoard(board);
+		boolean valid;
+		int[] mineLocationY;
+		int[] mineLocationX;
+		
+		do {
+			 mineLocationY = genMinesY();
+			 mineLocationX = genMinesX();
 
-		int[] mineLocationY = genMinesY();
-		int[] mineLocationX = genMinesX();
+			boolean minesGood = checkMinesTwo(mineLocationY,mineLocationX);
+			System.out.println(minesGood);
+			
 
-		boolean minesGood = checkMinesTwo(mineLocationY,mineLocationX);
-		System.out.println(minesGood);
-
-		if(minesGood = true){
-			System.out.println("True");
-			printArray(mineLocationY);
-			printArray(mineLocationX);
+			if(checkMinesTwo(mineLocationY,mineLocationX)){
+				System.out.println("The mines are in VALID positions");
+				valid = true;
+			}
+			else{
+				System.out.println("The mines are in INVALID positions");
+				valid = false;
+			}
+			System.out.println(valid);
 		}
-		else if(minesGood = false){
-			//while(minesGood=false){
-				System.out.println("False");
-				int[] mineLocationY1 = genMinesY();
-				int[] mineLocationX1 = genMinesX();
+		while(valid=false);
 
-				minesGood = checkMinesTwo(mineLocationY,mineLocationX);
-
-			//}
-		}
 
 
 		//char input = getInput();
@@ -223,8 +225,10 @@ public class Game {
 			return false;
 		}
 		else {
-			return false;
+			return true;
 		}
 	}
+
+
 }
 
