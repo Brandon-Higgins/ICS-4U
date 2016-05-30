@@ -1,0 +1,239 @@
+/**Copyright (c) Brandon Higgins 2016
+All Rights Reserved
+Use of this code is strictly prohibited without use of the above copyright claim 
+ */
+
+package Tests;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class GameTest {
+	public static void main(String[]args) {
+
+		final char[][] board = {{'A', 'B', 'C', 'D', 'E'},{ 'F', 'G', 'H', 'I', 'J'},
+				{'K','L','M','N','O'},{'P','Q','R','S','T'},{'U','V','W','X','Y'}};
+
+		printBoard(board);
+		boolean valid=false;
+		int[] mineLocationY;
+		int[] mineLocationX;
+
+		mineLocationY = genMinesY();
+		mineLocationX = genMinesX();
+
+		//for(int i =0;i<3;i++){
+		while(valid==false){
+			mineLocationY = genMinesY();
+			mineLocationX = genMinesX();
+
+			boolean minesGood = checkMinesTwo(mineLocationY,mineLocationX);
+			System.out.println(minesGood);
+
+
+			if(checkMinesTwo(mineLocationY,mineLocationX)){
+				System.out.println("The mines are in VALID positions");
+				valid = true;
+			}
+			else{
+				System.out.println("The mines are in INVALID positions");
+				valid = false;
+			}
+			System.out.println(valid);
+		}
+		
+
+
+
+
+		//char input = getInput();
+
+
+		char[][]mineBoard = placeMines(mineLocationY,mineLocationX,board);
+
+		printMineBoard(mineBoard);
+	}
+
+	public static void printBoard(final char[][] board) {
+		for (final char[] row : board) {
+			for (final char i : row) {
+				System.out.print(i);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static char getInput(){
+		System.out.println("Please pick a spot");
+		Scanner reader = new Scanner(System.in);
+		char userInput = reader.next().charAt(0);
+
+		return userInput;
+	}
+
+	public static int[] genMinesY(){
+		int[]mines = new int[5]; 
+
+		for(int i=0;i<5;i++){
+
+			int max = 4;
+			int min = 0;
+
+			int range = (max - min) + 1;     
+			int mine = (int)(Math.random() * range) + min;
+
+
+			mines[i]=mine;
+		}
+		return mines;
+	}
+
+	public static int[] genMinesX(){
+		int[]mines = new int[5]; 
+
+		for(int i=0;i<5;i++){
+
+			int max = 4;
+			int min = 0;
+
+			int range = (max - min) + 1;     
+			int mine = (int)(Math.random() * range) + min;
+
+
+			mines[i]=mine;
+		}
+		return mines;
+	}
+
+	private static void printArray(int[] anArray) {
+		for (int i = 0; i < anArray.length; i++) {
+			if (i > 0) {
+				System.out.print(", ");
+			}
+			System.out.print(anArray[i]);
+		}
+		System.out.println();
+	}
+
+	public static boolean checkMines(int[]mineLocationY,int[]mineLocationX){
+		int y1 = mineLocationY[0];
+		int y2 = mineLocationY[1];
+		int y3 = mineLocationY[2];
+		int y4 = mineLocationY[3];
+		int y5 = mineLocationY[4];
+
+		int x1 = mineLocationX[0];
+		int x2 = mineLocationX[1];
+		int x3 = mineLocationX[2];
+		int x4 = mineLocationX[3];
+		int x5 = mineLocationX[4];
+
+		for(int i=0; i<4;i++){
+			if(mineLocationY[i] ==mineLocationY[i+1] && mineLocationX[i] ==mineLocationX[i+1]){
+				return false;
+			}
+			else if(mineLocationY[i] ==mineLocationY[i+2] && mineLocationX[i] ==mineLocationX[i+2]){
+				return false;
+			}
+			else if(mineLocationY[i] ==mineLocationY[i+3] && mineLocationX[i] ==mineLocationX[i+3]){
+				return false;
+			}
+			else if(mineLocationY[i] ==mineLocationY[i+4] && mineLocationX[i] ==mineLocationX[i+4]){
+				return false;
+			}
+			else return true;
+
+		}
+		return false;
+
+	}
+
+	public static char[][] placeMines(int[] mineLocationY,int[] mineLocationX,char[][]board){
+		char[][]mineBoard = new char[5][5];
+
+		int y1 = mineLocationY[0];
+		int y2 = mineLocationY[1];
+		int y3 = mineLocationY[2];
+		int y4 = mineLocationY[3];
+		int y5 = mineLocationY[4];
+
+		int x1 = mineLocationX[0];
+		int x2 = mineLocationX[1];
+		int x3 = mineLocationX[2];
+		int x4 = mineLocationX[3];
+		int x5 = mineLocationX[4];
+
+		mineBoard[y1][x1] = 'Z';
+		mineBoard[y2][x2] = 'Z';
+		mineBoard[y3][x3] = 'Z';
+		mineBoard[y4][x4] = 'Z';
+		mineBoard[y5][x5] = 'Z';
+
+		return mineBoard;
+
+
+	}
+
+	public static void printMineBoard(char[][]mineBoard){
+		for (final char[] row : mineBoard) {
+			for (final char i : row) {
+				System.out.print(i);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
+
+	}
+
+	public static boolean checkMinesTwo(int[]mineLocationY,int[]mineLocationX){
+		int y1 = mineLocationY[0];
+		int y2 = mineLocationY[1];
+		int y3 = mineLocationY[2];
+		int y4 = mineLocationY[3];
+		int y5 = mineLocationY[4];
+
+		int x1 = mineLocationX[0];
+		int x2 = mineLocationX[1];
+		int x3 = mineLocationX[2];
+		int x4 = mineLocationX[3];
+		int x5 = mineLocationX[4];
+
+		if(y1 == y2 && x1==x2){
+			return false;
+		}
+		else if(y1 == y3 && x1==x3){
+			return false;
+		}
+		else if(y1 == y4 && x1==x4){
+			return false;
+		}
+		else if(y1 == y5 && x1==x5){
+			return false;
+		}
+		else if(y2 == y3 && x2==x3){
+			return false;
+		}
+		else if(y2 == y4 && x2==x4){
+			return false;
+		}
+		else if(y2 == y5 && x2==x5){
+			return false;
+		}
+		else if(y3 == y4 && x3==x4){
+			return false;
+		}
+		else if(y3 == y5 && x3==x5){
+			return false;
+		}
+		else if(y4 == y5 && x4==x5){
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+
+}
+
