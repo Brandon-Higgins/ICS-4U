@@ -3,315 +3,401 @@ All Rights Reserved
 Use of this code is strictly prohibited without use of the above copyright claim 
  */
 
-package Tests;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameTest {
-	public static void main(String[]args) {
+    public static void main(String[]args) {
 
-		final char[][] board = {{'A', 'B', 'C', 'D', 'E'},{ 'F', 'G', 'H', 'I', 'J'},
-				{'K','L','M','N','O'},{'P','Q','R','S','T'},{'U','V','W','X','Y'}};
+        final char[][] board = {{'A', 'B', 'C', 'D', 'E'},{ 'F', 'G', 'H', 'I', 'J'},
+                {'K','L','M','N','O'},{'P','Q','R','S','T'},{'U','V','W','X','Y'}};
 
-		printBoard(board);
-		boolean valid=false;
-		int[] mineLocationY;
-		int[] mineLocationX;
+        printBoard(board);
+        boolean valid=false;
+        int[] mineLocationY;
+        int[] mineLocationX;
 
-		mineLocationY = genMinesY();
-		mineLocationX = genMinesX();
+        mineLocationY = genMinesY();
+        mineLocationX = genMinesX();
 
-		//for(int i =0;i<3;i++){
-		while(valid==false){
-			mineLocationY = genMinesY();
-			mineLocationX = genMinesX();
+        //for(int i =0;i<3;i++){
+        while(valid==false){
+            mineLocationY = genMinesY();
+            mineLocationX = genMinesX();
 
-			boolean minesGood = checkMinesTwo(mineLocationY,mineLocationX);
-			System.out.println(minesGood);
+            boolean minesGood = checkMinesTwo(mineLocationY,mineLocationX);
+            System.out.println(minesGood);
 
+            if(checkMinesTwo(mineLocationY,mineLocationX)){
+                System.out.println("The mines are in VALID positions");
+                valid = true;
+            }
+            else{
+                System.out.println("The mines are in INVALID positions");
+                valid = false;
+            }
+            System.out.println(valid);
+        }
 
-			if(checkMinesTwo(mineLocationY,mineLocationX)){
-				System.out.println("The mines are in VALID positions");
-				valid = true;
-			}
-			else{
-				System.out.println("The mines are in INVALID positions");
-				valid = false;
-			}
-			System.out.println(valid);
-		}
+        char input = getInput();
+        int x = getInputX(input);
+        int y = getInputY(input);
 
-		
-			char input = getInput();
-			
+        char[][]mineBoard = placeMines(mineLocationY,mineLocationX,board);
+        printMineBoard(mineBoard);
+    }
 
+    public static void printBoard(final char[][] board) {
+        for (final char[] row : board) {
+            for (final char i : row) {
+                System.out.print(i);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
 
-		char[][]mineBoard = placeMines(mineLocationY,mineLocationX,board);
+    public static char getInput(){
+        System.out.println("Please pick a spot");
+        Scanner reader = new Scanner(System.in);
+        char userInput = reader.next().charAt(0);
 
-		printMineBoard(mineBoard);
-	}
+        return userInput;
+    }
 
-	public static void printBoard(final char[][] board) {
-		for (final char[] row : board) {
-			for (final char i : row) {
-				System.out.print(i);
-				System.out.print(" ");
-			}
-			System.out.println();
-		}
-	}
+    public static int[] genMinesY(){
+        int[]mines = new int[5]; 
 
-	public static char getInput(){
-		System.out.println("Please pick a spot");
-		Scanner reader = new Scanner(System.in);
-		char userInput = reader.next().charAt(0);
+        for(int i=0;i<5;i++){
 
-		return userInput;
-	}
+            int max = 4;
+            int min = 0;
 
-	public static int[] genMinesY(){
-		int[]mines = new int[5]; 
+            int range = (max - min) + 1;     
+            int mine = (int)(Math.random() * range) + min;
 
-		for(int i=0;i<5;i++){
+            mines[i]=mine;
+        }
+        return mines;
+    }
 
-			int max = 4;
-			int min = 0;
+    public static int[] genMinesX(){
+        int[]mines = new int[5]; 
 
-			int range = (max - min) + 1;     
-			int mine = (int)(Math.random() * range) + min;
+        for(int i=0;i<5;i++){
 
+            int max = 4;
+            int min = 0;
 
-			mines[i]=mine;
-		}
-		return mines;
-	}
+            int range = (max - min) + 1;     
+            int mine = (int)(Math.random() * range) + min;
 
-	public static int[] genMinesX(){
-		int[]mines = new int[5]; 
+            mines[i]=mine;
+        }
+        return mines;
+    }
 
-		for(int i=0;i<5;i++){
+    private static void printArray(int[] anArray) {
+        for (int i = 0; i < anArray.length; i++) {
+            if (i > 0) {
+                System.out.print(", ");
+            }
+            System.out.print(anArray[i]);
+        }
+        System.out.println();
+    }
 
-			int max = 4;
-			int min = 0;
+    public static boolean checkMines(int[]mineLocationY,int[]mineLocationX){
+        int y1 = mineLocationY[0];
+        int y2 = mineLocationY[1];
+        int y3 = mineLocationY[2];
+        int y4 = mineLocationY[3];
+        int y5 = mineLocationY[4];
 
-			int range = (max - min) + 1;     
-			int mine = (int)(Math.random() * range) + min;
+        int x1 = mineLocationX[0];
+        int x2 = mineLocationX[1];
+        int x3 = mineLocationX[2];
+        int x4 = mineLocationX[3];
+        int x5 = mineLocationX[4];
 
+        for(int i=0; i<4;i++){
+            if(mineLocationY[i] ==mineLocationY[i+1] && mineLocationX[i] ==mineLocationX[i+1]){
+                return false;
+            }
+            else if(mineLocationY[i] ==mineLocationY[i+2] && mineLocationX[i] ==mineLocationX[i+2]){
+                return false;
+            }
+            else if(mineLocationY[i] ==mineLocationY[i+3] && mineLocationX[i] ==mineLocationX[i+3]){
+                return false;
+            }
+            else if(mineLocationY[i] ==mineLocationY[i+4] && mineLocationX[i] ==mineLocationX[i+4]){
+                return false;
+            }
+            else return true;
 
-			mines[i]=mine;
-		}
-		return mines;
-	}
+        }
+        return false;
 
-	private static void printArray(int[] anArray) {
-		for (int i = 0; i < anArray.length; i++) {
-			if (i > 0) {
-				System.out.print(", ");
-			}
-			System.out.print(anArray[i]);
-		}
-		System.out.println();
-	}
+    }
 
-	public static boolean checkMines(int[]mineLocationY,int[]mineLocationX){
-		int y1 = mineLocationY[0];
-		int y2 = mineLocationY[1];
-		int y3 = mineLocationY[2];
-		int y4 = mineLocationY[3];
-		int y5 = mineLocationY[4];
+    public static char[][] placeMines(int[] mineLocationY,int[] mineLocationX,char[][]board){
+        char[][]mineBoard = new char[5][5];
 
-		int x1 = mineLocationX[0];
-		int x2 = mineLocationX[1];
-		int x3 = mineLocationX[2];
-		int x4 = mineLocationX[3];
-		int x5 = mineLocationX[4];
+        int y1 = mineLocationY[0];
+        int y2 = mineLocationY[1];
+        int y3 = mineLocationY[2];
+        int y4 = mineLocationY[3];
+        int y5 = mineLocationY[4];
 
-		for(int i=0; i<4;i++){
-			if(mineLocationY[i] ==mineLocationY[i+1] && mineLocationX[i] ==mineLocationX[i+1]){
-				return false;
-			}
-			else if(mineLocationY[i] ==mineLocationY[i+2] && mineLocationX[i] ==mineLocationX[i+2]){
-				return false;
-			}
-			else if(mineLocationY[i] ==mineLocationY[i+3] && mineLocationX[i] ==mineLocationX[i+3]){
-				return false;
-			}
-			else if(mineLocationY[i] ==mineLocationY[i+4] && mineLocationX[i] ==mineLocationX[i+4]){
-				return false;
-			}
-			else return true;
+        int x1 = mineLocationX[0];
+        int x2 = mineLocationX[1];
+        int x3 = mineLocationX[2];
+        int x4 = mineLocationX[3];
+        int x5 = mineLocationX[4];
 
-		}
-		return false;
+        mineBoard[y1][x1] = 'Z';
+        mineBoard[y2][x2] = 'Z';
+        mineBoard[y3][x3] = 'Z';
+        mineBoard[y4][x4] = 'Z';
+        mineBoard[y5][x5] = 'Z';
 
-	}
+        return mineBoard;
 
-	public static char[][] placeMines(int[] mineLocationY,int[] mineLocationX,char[][]board){
-		char[][]mineBoard = new char[5][5];
+    }
 
-		int y1 = mineLocationY[0];
-		int y2 = mineLocationY[1];
-		int y3 = mineLocationY[2];
-		int y4 = mineLocationY[3];
-		int y5 = mineLocationY[4];
+    public static void printMineBoard(char[][]mineBoard){
+        for (final char[] row : mineBoard) {
+            for (final char i : row) {
+                System.out.print(i);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
 
-		int x1 = mineLocationX[0];
-		int x2 = mineLocationX[1];
-		int x3 = mineLocationX[2];
-		int x4 = mineLocationX[3];
-		int x5 = mineLocationX[4];
+    }
 
-		mineBoard[y1][x1] = 'Z';
-		mineBoard[y2][x2] = 'Z';
-		mineBoard[y3][x3] = 'Z';
-		mineBoard[y4][x4] = 'Z';
-		mineBoard[y5][x5] = 'Z';
+    public static boolean checkMinesTwo(int[]mineLocationY,int[]mineLocationX){
+        int y1 = mineLocationY[0];
+        int y2 = mineLocationY[1];
+        int y3 = mineLocationY[2];
+        int y4 = mineLocationY[3];
+        int y5 = mineLocationY[4];
 
-		return mineBoard;
+        int x1 = mineLocationX[0];
+        int x2 = mineLocationX[1];
+        int x3 = mineLocationX[2];
+        int x4 = mineLocationX[3];
+        int x5 = mineLocationX[4];
 
+        if(y1 == y2 && x1==x2){
+            return false;
+        }
+        else if(y1 == y3 && x1==x3){
+            return false;
+        }
+        else if(y1 == y4 && x1==x4){
+            return false;
+        }
+        else if(y1 == y5 && x1==x5){
+            return false;
+        }
+        else if(y2 == y3 && x2==x3){
+            return false;
+        }
+        else if(y2 == y4 && x2==x4){
+            return false;
+        }
+        else if(y2 == y5 && x2==x5){
+            return false;
+        }
+        else if(y3 == y4 && x3==x4){
+            return false;
+        }
+        else if(y3 == y5 && x3==x5){
+            return false;
+        }
+        else if(y4 == y5 && x4==x5){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
-	}
+    public static int getInputX(int input){
+        int x=0;
+        if(input =='A'){
+            x=0;
+        }
+        if(input =='B'){
+            x=1;
+        }
+        if(input =='C'){
+            x=2;
+        }
+        if(input =='D'){
+            x=3;
+        }
+        if(input =='E'){
+            x=4;
+        }
+        if(input =='F'){
+            x=0;
+        }
+        if(input =='G'){
+            x=1;
+        }
+        if(input =='H'){
+            x=2;
+        }
+        if(input =='I'){
+            x=3;
+        }
+        if(input =='J'){
+            x=4;
+        }
+        if(input =='K'){
+            x=0;
+        }
+        if(input =='L'){
+            x=1;
+        }
+        if(input =='M'){
+            x=2;
+        }
+        if(input =='N'){
+            x=3;
+        }
+        if(input =='O'){
+            x=4;
+        }
+        if(input =='P'){
+            x=0;
+        }
+        if(input =='Q'){
+            x=1;
+        }
+        if(input =='R'){
+            x=2;
+        }
+        if(input =='S'){
+            x=3;
+        }
+        if(input =='T'){
+            x=4;
+        }
+        if(input =='U'){
+            x=0;
+        }
+        if(input =='V'){
+            x=1;
+        }
+        if(input =='W'){
+            x=2;
+        }
+        if(input =='X'){
+            x=3;
+        }
+        if(input =='Y'){
+            x=4;
+        }
+        return x;
+    }
 
-	public static void printMineBoard(char[][]mineBoard){
-		for (final char[] row : mineBoard) {
-			for (final char i : row) {
-				System.out.print(i);
-				System.out.print(" ");
-			}
-			System.out.println();
-		}
+    public static int getInputY(int input){
+        int y = o;
+        if(input =='A'){
+            y=0;
+        }
+        if(input =='B'){
+            y=1;
+        }
+        if(input =='C'){
+            y=2;
+        }
+        if(input =='D'){
+            y=3;
+        }
+        if(input =='E'){
+            y=4;
+        }
+        if(input =='F'){
+            y=0;
+        }
+        if(input =='G'){
+            y=1;
+        }
+        if(input =='H'){
+            y=2;
+        }
+        if(input =='I'){
+            y=3;
+        }
+        if(input =='J'){
+            y=4;
+        }
+        if(input =='K'){
+            y=0;
+        }
+        if(input =='L'){
+            y=1;
+        }
+        if(input =='M'){
+            y=2;
+        }
+        if(input =='N'){
+            y=3;
+        }
+        if(input =='O'){
+            y=4;
+        }
+        if(input =='P'){
+            y=0;
+        }
+        if(input =='Q'){
+            y=1;
+        }
+        if(input =='R'){
+            y=2;
+        }
+        if(input =='S'){
+            y=3;
+        }
+        if(input =='T'){
+            y=4;
+        }
+        if(input =='U'){
+            y=0;
+        }
+        if(input =='V'){
+            y=1;
+        }
+        if(input =='W'){
+            y=2;
+        }
+        if(input =='X'){
+            y=3;
+        }
+        if(input =='Y'){
+            y=4;
+        }
+        return y;
+    }
 
-	}
+    public static int processing(int x, int y,int[]mineLocationY,int[]mineLocationX ){
+        int mineY1 = mineLocationY[0];
+        int mineY2 = mineLocationY[1];
+        int mineY3 = mineLocationY[2];
+        int mineY4 = mineLocationY[3];
+        int mineY5 = mineLocationY[4];
 
-	public static boolean checkMinesTwo(int[]mineLocationY,int[]mineLocationX){
-		int y1 = mineLocationY[0];
-		int y2 = mineLocationY[1];
-		int y3 = mineLocationY[2];
-		int y4 = mineLocationY[3];
-		int y5 = mineLocationY[4];
-
-		int x1 = mineLocationX[0];
-		int x2 = mineLocationX[1];
-		int x3 = mineLocationX[2];
-		int x4 = mineLocationX[3];
-		int x5 = mineLocationX[4];
-
-		if(y1 == y2 && x1==x2){
-			return false;
-		}
-		else if(y1 == y3 && x1==x3){
-			return false;
-		}
-		else if(y1 == y4 && x1==x4){
-			return false;
-		}
-		else if(y1 == y5 && x1==x5){
-			return false;
-		}
-		else if(y2 == y3 && x2==x3){
-			return false;
-		}
-		else if(y2 == y4 && x2==x4){
-			return false;
-		}
-		else if(y2 == y5 && x2==x5){
-			return false;
-		}
-		else if(y3 == y4 && x3==x4){
-			return false;
-		}
-		else if(y3 == y5 && x3==x5){
-			return false;
-		}
-		else if(y4 == y5 && x4==x5){
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-
-	public static int getInputX(int input){
-		int x=0;
-		if(input =='A'){
-			x=0;
-		}
-		if(input =='B'){
-			x=1;
-		}
-		if(input =='C'){
-			x=2;
-		}
-		if(input =='D'){
-			x=3;
-		}
-		if(input =='E'){
-			x=4;
-		}
-		if(input =='F'){
-			x=0;
-		}
-		if(input =='G'){
-			x=1;
-		}
-		if(input =='H'){
-			x=2;
-		}
-		if(input =='I'){
-			x=3;
-		}
-		if(input =='J'){
-			x=4;
-		}
-		if(input =='K'){
-			x=0;
-		}
-		if(input =='L'){
-			x=1;
-		}
-		if(input =='M'){
-			x=2;
-		}
-		if(input =='N'){
-			x=3;
-		}
-		if(input =='O'){
-			x=4;
-		}
-		if(input =='P'){
-			x=0;
-		}
-		if(input =='Q'){
-			x=1;
-		}
-		if(input =='R'){
-			x=2;
-		}
-		if(input =='S'){
-			x=3;
-		}
-		if(input =='T'){
-			x=4;
-		}
-		if(input =='U'){
-			x=0;
-		}
-		if(input =='V'){
-			x=1;
-		}
-		if(input =='W'){
-			x=2;
-		}
-		if(input =='X'){
-			x=3;
-		}
-		if(input =='Y'){
-			x=4;
-		}
-		
-		return x;
-	}
-
+        int mineX1 = mineLocationX[0];
+        int mineX2 = mineLocationX[1];
+        int mineX3 = mineLocationX[2];
+        int mineX4 = mineLocationX[3];
+        int mineX5 = mineLocationX[4];
+        
+        
+    }
 }
 
