@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Tester {
+    public static void main(String[]args){
+
+        System.out.println("Please enter a DNA strand");
+        Scanner dnaScanner = new Scanner(System.in);
+        String dna = dnaScanner.nextLine();
+
+        int length = length(dna);
+
+        char[] dnaArray = dna.toCharArray();
+        dnaArray = intoThree(dnaArray,length);
+        printArray(dnaArray,length);
+
+        
+    }
+
+    public static int length(String dna){
+        int length = dna.length();
+        return length;
+    }    
+
+    public static char[] intoThree(char[] dnaArray, int length){
+
+        for (int i=1;i<length;i++){
+            if(i%3==0){
+               dnaArray[i]=' ';
+               //System.out.print(" ");
+            }
+            else {
+            }
+        }
+        return dnaArray;
+    }
+
+    public static void printArray(char[] dnaArray, int length){
+        for(int i =0;i<length;i++){ 
+            System.out.print(dnaArray[i]);
+        }
+    }
+}
