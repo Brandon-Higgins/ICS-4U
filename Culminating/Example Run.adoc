@@ -1,0 +1,20 @@
+Level 1 Input: ATGACCG, Level 1 Output: UACUGGC
+
+Level 2 Input: CAGTTTAGCTAGAAA, Level 2 Output: CAG TTT AGC TAG AAA (Codons)
+
+Level 3 Input: CAGTTTAGCTAGAAA, Level 3 Output: Q   F   S   STOP (Note AAA is ignored since it is past the STOP codon)
+
+Level 4 Input: CAGTTTAGCTAG, Level 4 Output: 
+
+Possible Codon Combination:
+
+Read 1:		CAG TTT AGC TAG	
+Read 2:	C	AGT TTA GCT AG
+Read 3:  CA 	GTT TAG CTA G
+
+Possible Protein Results
+
+Reading Frame 1:		Q   F   S   STOP
+Reading Frame 2:		NO STOP CODON
+Reading Frame 3:		V STOP
+
