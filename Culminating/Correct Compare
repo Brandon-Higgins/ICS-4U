@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class DNA{
+    public static void main(String[]args) {
+
+        System.out.println("Please enter a DNA sequence");
+        Scanner dnaScanner = new Scanner(System.in);
+        String dnaString = dnaScanner.nextLine();
+
+        int i=0;
+        char protein;
+        while (i <=dnaString.length()-3) {
+            String codon = dnaString.substring(i,i+=3);
+            System.out.println(codon);
+            protein = checkCodon(codon);
+            System.out.println(protein);
+
+        }
+
+    }
+
+    public static char checkCodon(String codon){
+        String a = "TTT";
+        if(codon.equals(a)){
+            char protein = 'F';
+            // System.out.println(protein);
+            return protein;
+        }
+        else{
+            char protein = 'D';
+            //System.out.println(protein);
+            return protein;
+        }
+    }
+}
