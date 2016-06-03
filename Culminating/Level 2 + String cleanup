@@ -1,0 +1,85 @@
+/**Copyright (c) Brandon Higgins 2016
+All Rights Reserved
+Use of this code is strictly prohibited without use of the above copyright claim 
+ */
+
+package Testing;
+
+//import java.util.LinkedList;
+import java.util.*;
+
+public class LinkedLists2 {
+	public static void main(String[]args){
+
+		LinkedList<String> dnaList = new LinkedList<String>();
+
+		System.out.println("Please enter a DNA sequence");
+		Scanner dnaScanner = new Scanner(System.in);
+		String dnaString = dnaScanner.nextLine();
+
+		int length = length(dnaString);
+
+		char[] dnaArray = dnaString.toCharArray();
+
+		splitIntoThree(dnaList,length,dnaString);
+		//System.out.println(dnaList);
+		
+		/* String dna = listToString(dnaList);
+		System.out.println(dna);
+		*/
+		String dna = listToString2(dnaList);
+		System.out.println(dna);
+		
+		/*dna = dna.replaceAll("(\\w+)\\p{Punct}(\\s|$)", "$1$2");
+		System.out.println(dna);
+		*/
+		String[] dnaClean = stringCleanup(dna);
+		System.out.println(dnaClean);
+	}
+
+	public static int length(String dna){
+		int length = dna.length();
+		return length;
+	}  
+
+	public static void splitIntoThree(LinkedList<String> dnaList, int length, String dnaString){
+		for (int i=0;i<length;i++){
+
+			if(i%3==0){
+				dnaList.add(" ");
+			}
+
+			char temp = dnaString.charAt(i);
+			String temp2 = Character.toString(temp);
+
+			dnaList.add(temp2);
+		}
+		dnaList.remove(" ");
+		//System.out.println(dnaList);
+	}
+
+	public static String listToString(LinkedList<String> dnaList){
+		String listString = null;
+		for (String s : dnaList)
+		{
+			listString += s + "\t";
+		}
+
+		return listString;
+
+	}
+	public static String listToString2(LinkedList<String> dnaList){
+		String listString = String.join(", ", dnaList);
+		return listString;
+
+	}
+	
+	public static String[] stringCleanup(String dna){
+		/*String resultString = dna.replaceAll("\\s+","");
+		resultString = dna.replaceAll("([a-z]+)[?:!.,;]*", "$1");
+		*/
+		String[] resultString = dna.replaceAll("^a-zA-Z ", "").toLowerCase().split("\\s+");
+		return resultString;
+	}
+
+}
