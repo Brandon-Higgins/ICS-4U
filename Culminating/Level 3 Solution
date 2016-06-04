@@ -1,0 +1,142 @@
+package Testing;
+
+import java.util.*;
+
+public class DNA{
+	public static void main(String[]args) {
+
+		System.out.println("Please enter a DNA sequence");
+		Scanner dnaScanner = new Scanner(System.in);
+		String dnaString = dnaScanner.nextLine();
+
+		int i=0;
+		char protein;
+		while (i <=dnaString.length()-3) {
+			String codon = dnaString.substring(i,i+=3);
+			System.out.println("The codon is... "+codon);
+			protein = checkCodon(codon);
+			if(protein==' '){
+				
+				System.out.println("The resulting protein is...STOP");
+				System.exit(1);
+			}
+			System.out.println("The resulting protein is..." +protein);
+
+		}
+
+	}
+
+	public static char checkCodon(String codon){
+		String a = "TTT",b ="TTC",c="TTA",d="TTG",e="CTT",f="CTC",g="CTA",h="CTG",i="ATT",
+				j="ATC",k="ATA",l="ATG",m="GTT",n="GTC",o="GTA",p="GTG",q="TCT",r="TCC",s="TCA",
+				t="TCG",u="CCT",v="CCC",w="CCA",x="CCG",y="ACT",z="ACC",a1="ACA",b1="ACG",c1="GCT",
+				d1="GCC",e1="GCA",f1="GCG",g1="TAT",h1="TAC",i1="TAA",j1="TAG",k1="CAT",l1="CAC",m1="CAA",
+				n1="CAG",o1="AAT",p1="AAC",q1="AAA",r1="AAG",s1="GAT",t1="GAC",u1="GAA",v1="GAG",w1="TGT",x1="TGC",
+				y1="TGA",z1="TGG",a2="CGT",b2="CGC",c2="CGA",d2="CGG",e2="AGT", f2="AGC", g2="AGA",h2="AGG",i2="GGT",
+				j2="GGC",k2="GGA",l2="GGG";
+				
+
+				if(codon.equals(a)||codon.equals(b)){
+					char protein = 'F';
+					// System.out.println(protein);
+					return protein;
+				}
+				else if(codon.equals(c)||codon.equals(d)||codon.equals(e)||codon.equals(f)||codon.equals(g)||codon.equals(h)){
+					char protein = 'L';
+					return protein;
+				}
+				else if(codon.equals(i)||codon.equals(j)||codon.equals(k)){
+					char protein = 'I';
+					return protein;
+				}
+				else if(codon.equals(l)){
+					char protein = 'M';
+					return protein;
+				}
+				else if(codon.equals(m)||codon.equals(n)||codon.equals(o)||codon.equals(p)){
+					char protein = 'V';
+					return protein;
+				}
+				else if(codon.equals(q)||codon.equals(r)||codon.equals(s)||codon.equals(t)){
+					char protein = 'S';
+					return protein;
+				}
+				else if(codon.equals(u)||codon.equals(v)||codon.equals(w)||codon.equals(x)){
+					char protein = 'P';
+					return protein;
+				}
+				else if(codon.equals(y)||codon.equals(z)||codon.equals(a1)||codon.equals(b1)){
+					char protein = 'T';
+					return protein;
+				}
+				else if(codon.equals(c1)||codon.equals(d1)||codon.equals(e1)||codon.equals(f1)){
+					char protein = 'A';
+					return protein;
+				}
+				else if(codon.equals(g1)||codon.equals(h1)){
+					char protein = 'Y';
+					return protein;
+				}
+				else if(codon.equals(i1)||codon.equals(j1)){
+					char protein = ' ';
+					return protein;
+				}
+				else if(codon.equals(k1)||codon.equals(l1)){
+					char protein = 'H';
+					return protein;
+				}
+				else if(codon.equals(m1)||codon.equals(n1)){
+					char protein = 'Q';
+					return protein;
+				}
+				else if(codon.equals(o1)||codon.equals(p1)){
+					char protein = 'N';
+					return protein;
+				}
+				else if(codon.equals(q1)||codon.equals(r1)){
+					char protein = 'K';
+					return protein;
+				}
+				else if(codon.equals(s1)||codon.equals(t1)){
+					char protein = 'D';
+					return protein;
+				}
+				else if(codon.equals(u1)||codon.equals(v1)){
+					char protein = 'E';
+					return protein;
+				}
+				else if(codon.equals(w1)||codon.equals(x1)){
+					char protein = 'C';
+					return protein;
+				}
+				else if(codon.equals(y1)){
+					char protein = ' ';
+					return protein;
+				}
+				else if(codon.equals(z1)){
+					char protein = 'W';
+					return protein;
+				}
+				else if(codon.equals(a2)||codon.equals(b2)||codon.equals(c2)||codon.equals(d2)){
+					char protein = 'R';
+					return protein;
+				}
+				else if(codon.equals(e2)||codon.equals(f2)){
+					char protein = 'S';
+					return protein;
+				}
+				else if(codon.equals(g2)||codon.equals(h2)){
+					char protein = 'R';
+					return protein;
+				}
+				else if(codon.equals(i2)||codon.equals(j2)||codon.equals(k2)||codon.equals(l2)){
+					char protein = 'G';
+					return protein;
+				}
+				
+				else{
+					char protein='X';
+					return protein;
+				}
+	}
+}
